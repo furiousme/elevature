@@ -1,4 +1,4 @@
-const CurlyArrow = ({ color = '000000', width = 300, height = 300 }) => {
+const CurlyArrow = ({ color = '000000', width = '100%', height = '100%' }) => {
   return (
     <svg
       fill={color}
@@ -13,7 +13,7 @@ const CurlyArrow = ({ color = '000000', width = 300, height = 300 }) => {
         strokeLinecap='round'
         strokeLinejoin='round'
         stroke='#CCCCCC'
-        stroke-width='2.401776'
+        strokeWidth='2.401776'
       ></g>
       <g id='SVGRepo_iconCarrier'>
         <g>
