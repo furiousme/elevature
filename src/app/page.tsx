@@ -2,12 +2,12 @@ import Link from 'next/link';
 
 import CurlyArrow from 'components/icons/curly-arrow';
 
-export default function Home() {
+const Home = () => {
   return (
     <div className='relative flex min-h-screen overflow-hidden'>
       <div className='bg-circle-top' />
       <div className='bg-circle-bottom' />
-      <div className='container mx-auto flex min-h-full flex-col'>
+      <div className='container flex min-h-full flex-col'>
         <header className='p-5'>
           <Link href='/' className='hover text-xl font-bold uppercase'>
             Elevature
@@ -40,4 +40,6 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
+
+export default Home;

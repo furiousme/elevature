@@ -7,7 +7,7 @@ const CurlyArrow = ({ color = '000000', width = '100%', height = '100%' }) => {
       viewBox='-21.02 -21.02 342.26 342.26'
       transform='rotate(0)'
     >
-      <g id='SVGRepo_bgCarrier' stroke-width='0'></g>
+      <g id='SVGRepo_bgCarrier' strokeWidth='0'></g>
       <g
         id='SVGRepo_tracerCarrier'
         strokeLinecap='round'

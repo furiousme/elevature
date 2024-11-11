@@ -6,6 +6,7 @@
   --background: #ffffff;
   --foreground: #171717;
   --accent: #00d1c5;
+  --inactive: #cccccc;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -45,8 +46,34 @@ body {
 }
 
 .hover {
+  @apply transition ease-in-out duration-200;
+
   &:hover {
-    opacity: 0.7;
-    transition: all 0.3s ease-in-out;
+    opacity: 0.8;
+  }
+}
+
+.progress-lines {
+  position: relative;
+  &::before,
+  &::after {
+    content: '';
+    height: 4px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &::before {
+    background-color: var(--accent);
+    left: 0;
+    transform: translate(-100%, -50%);
+  }
+
+  &::after {
+    background-color: var(--inactive);
+    right: 0;
+    transform: translate(100%, -50%);
   }
 }

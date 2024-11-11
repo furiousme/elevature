@@ -16,7 +16,8 @@
     // "quotes": ["error"],
     "newline-after-var": "warn",
     "@next/next/no-img-element": "off",
-    "no-unused-vars": "warn",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error",
     "import/order": [
       "error",
       {
