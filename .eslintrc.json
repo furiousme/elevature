@@ -1,3 +1,32 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript", "prettier"]
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript",
+    "prettier",
+    "plugin:tailwindcss/recommended"
+  ],
+  "rules": {
+    "no-console": ["error", { "allow": ["warn", "error", "info"] }],
+    "functional/no-return-void": "off",
+    "functional/no-class": "off",
+    "functional/no-throw-statement": "off",
+    "functional/no-let": "off",
+    "prefer-const": "error",
+    "functional/no-mixed-type": "off",
+    // "quotes": ["error"],
+    "newline-after-var": "warn",
+    "@next/next/no-img-element": "off",
+    "no-unused-vars": "warn",
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc"
+        }
+      }
+    ],
+    "key-spacing": ["error", { "beforeColon": false }],
+    "sort-imports": ["error", { "ignoreDeclarationSort": true, "ignoreCase": true }]
+  }
 }
