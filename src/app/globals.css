@@ -77,3 +77,10 @@ body {
     transform: translate(100%, -50%);
   }
 }
+
+.btn:disabled {
+  filter: grayscale(1);
+  &:hover {
+    opacity: 1;
+  }
+}
