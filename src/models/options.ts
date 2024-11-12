@@ -1,4 +1,4 @@
-import { SkillLevel } from 'app/types';
+import { SatisfactionLevel, SkillLevel, TimeCommitment } from 'app/types';
 
 export const industries = [
   'Accounting & Finance',
@@ -64,3 +64,14 @@ export const focusOptions = [
   'Transitioning to a new industry',
   'Building a specific skill set',
 ];
+
+export const learningStylesMap = {
+  selfPaced: 'Self-paced online courses',
+  interactive: 'Interactive, hands-on learning',
+  reading: 'Reading and research',
+  mentorship: 'Mentorship or coaching',
+};
+
+export const learningStyles = Object.entries(learningStylesMap);
+export const satisfactionLevels = Object.entries(SatisfactionLevel);
+export const timeCommitments = Object.entries(TimeCommitment);

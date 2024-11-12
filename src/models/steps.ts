@@ -1,6 +1,7 @@
 import Step1Form from 'components/forms/step1-form';
 import Step2Form from 'components/forms/step2-form';
 import Step3Form from 'components/forms/step3-form';
+import Step4Form from 'components/forms/step4-form';
 import Step1Icon from 'components/icons/step1-icon';
 import Step2Icon from 'components/icons/step2-icon';
 import Step3Icon from 'components/icons/step3-icon';
@@ -39,7 +40,7 @@ export const steps = [
     title: 'Skill Development Interests',
     description:
       'Think of which skills you are interested in learning to generate relevant suggestions',
-    Form: Step1Form,
+    Form: Step4Form,
   },
   {
     order: 5,

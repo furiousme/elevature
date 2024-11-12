@@ -48,7 +48,7 @@ const Step2Form = ({ goToStep, passAnswers }: Props) => {
         <p className='mb-4'>How would you rate your overall proficiency in your primary skills?</p>
 
         <div>
-          {Object.entries(skillLevels).map(([level, description]) => {
+          {Object.entries(skillLevels).map(([level, description], ind) => {
             return (
               <Fragment key={level}>
                 <div className='mb-4 flex items-center'>

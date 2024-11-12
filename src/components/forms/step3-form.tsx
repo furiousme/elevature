@@ -5,7 +5,7 @@ import config from '../../../tailwind.config';
 import { Answers, SatisfactionLevel } from 'app/types';
 import Dropdown from 'components/dropdown';
 import ArrowRight from 'components/icons/arrow-right';
-import { focusOptions } from 'models/options';
+import { focusOptions, satisfactionLevels } from 'models/options';
 import { steps } from 'models/steps';
 
 const colors = config.theme.extend.colors;
@@ -36,7 +36,7 @@ const Step3Form = ({ goToStep, passAnswers }: Props) => {
         <p className='mb-4'>How would you rate your overall proficiency in your primary skills?</p>
 
         <div className='mb-10 grid auto-cols-fr grid-cols-2'>
-          {Object.entries(SatisfactionLevel).map(([level, description]) => {
+          {satisfactionLevels.map(([level, description], ind) => {
             return (
               <div className='mb-4 flex items-center' key={level}>
                 <label className='flex items-center text-sm'>
@@ -44,7 +44,6 @@ const Step3Form = ({ goToStep, passAnswers }: Props) => {
                     type='radio'
                     className='size-5'
                     checked={level === satisfactionLevel}
-                    defaultChecked={level === SatisfactionLevel.VERY_SATISFIED}
                     name='skillLevel'
                     onChange={() => setSatisfactionLevel(level as SatisfactionLevel)}
                   />
