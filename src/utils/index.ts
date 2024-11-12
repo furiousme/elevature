@@ -5,8 +5,6 @@ export const getPassedSteps = (answers: Partial<Answers>) => {
   return Object.keys(answers).reduce((acc, key) => {
     const step = steps.find((el) => el.key === key);
 
-    console.log('calculate passed steps');
-
     return step ? [...acc, step.order] : acc;
   }, [] as number[]);
 };
