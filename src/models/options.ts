@@ -1,3 +1,5 @@
+import { SkillLevel } from 'app/types';
+
 export const industries = [
   'Accounting & Finance',
   'Advertising & Marketing',
@@ -48,4 +50,17 @@ export const industries = [
   'Wholesale Trade',
   'Writing & Content Creation',
   'Other',
+];
+
+export const skillLevels = {
+  [SkillLevel.BEGINNER]: 'I’m still learning or have basic knowledge.',
+  [SkillLevel.INTERMEDIATE]: 'I can perform tasks independently with some guidance.',
+  [SkillLevel.ADVANCED]: 'I’m highly skilled and can lead or teach others.',
+};
+
+export const focusOptions = [
+  'Advancing in my current role',
+  'Exploring new roles in my industry',
+  'Transitioning to a new industry',
+  'Building a specific skill set',
 ];

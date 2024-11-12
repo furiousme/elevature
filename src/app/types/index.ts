@@ -16,4 +16,27 @@ export type Answers = {
     jobTitle: string;
     industry: string;
   };
+  skills: {
+    currentSkills: string;
+    skillLevel: SkillLevel;
+  };
+  goals: {
+    satisfactionLevel: SatisfactionLevel;
+    focus: string;
+    longTermGoal: string;
+  };
 };
+
+export enum SkillLevel {
+  BEGINNER = 'Beginner',
+  INTERMEDIATE = 'Intermediate',
+  ADVANCED = 'Advanced',
+}
+
+export enum SatisfactionLevel {
+  VERY_SATISFIED = 'Very Satisfied',
+  SOMEWHAT_SATISFIED = 'Somewhat Satisfied',
+  NEUTRAL = 'Neutral',
+  UNSATISFIED = 'Unsatisfied',
+  VERY_UNSATISFIED = 'Very Unsatisfied',
+}

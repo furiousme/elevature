@@ -1,4 +1,4 @@
-import { MouseEvent, MouseEventHandler, useState } from 'react';
+import { MouseEvent, useState } from 'react';
 
 import config from '../../../tailwind.config';
 
@@ -16,9 +16,9 @@ type Props = {
 };
 
 const Step1Form = ({ goToStep, passAnswers }: Props) => {
+  const [step] = useState(() => steps.find((el) => el.order === 1));
   const [industry, setIndustry] = useState('');
   const [jobTitle, setJobTitle] = useState('');
-  const [step] = useState(steps.find((el) => el.order === 1));
 
   if (!step) return null;
 
