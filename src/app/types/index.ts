@@ -9,6 +9,7 @@ export type Step = {
 export type StepFormProps = {
   goToStep: (stepNumber: number) => void;
   passAnswers: (key: string, data: unknown) => void;
+  finishQuiz?: () => void;
 };
 
 export type Answers = {
@@ -29,6 +30,10 @@ export type Answers = {
     learningInterests: string;
     learningStyle: string;
   };
+  preferences: {
+    skillContext: string;
+    networkingInterest: NetworkingInterest;
+  };
 };
 
 export enum SkillLevel {
@@ -46,8 +51,14 @@ export enum SatisfactionLevel {
 }
 
 export enum TimeCommitment {
-  LESS_THAN_2_HOUR = 'Less than 2 hours',
+  LESS_THAN_2_HOURS = 'Less than 2 hours',
   BETWEEN_2_AND_5_HOURS = '2-5 hours',
   BETWEEN_5_AND_10_HOURS = '5-10 hours',
   MORE_THAN_10_HOURS = 'More than 10 hours',
+}
+
+export enum NetworkingInterest {
+  VERY = 'Very Interested',
+  SOMEWHAT = 'Somewhat Interested',
+  NOT = 'Not Interested',
 }

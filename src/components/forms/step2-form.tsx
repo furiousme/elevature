@@ -37,7 +37,7 @@ const Step2Form = ({ goToStep, passAnswers }: Props) => {
             interests.
           </label>
           <textarea
-            placeholder='e.g., data analysis, project management, JavaScript...'
+            placeholder='e.g., data analysis...'
             value={skills}
             onChange={(e) => setSkills(e.target.value)} // add validation
             className='block w-full max-w-lg rounded border border-inactive bg-background p-4 text-sm outline-accent'
@@ -46,9 +46,8 @@ const Step2Form = ({ goToStep, passAnswers }: Props) => {
         </div>
 
         <p className='mb-4'>How would you rate your overall proficiency in your primary skills?</p>
-
         <div>
-          {Object.entries(skillLevels).map(([level, description], ind) => {
+          {Object.entries(skillLevels).map(([level, description]) => {
             return (
               <Fragment key={level}>
                 <div className='mb-4 flex items-center'>

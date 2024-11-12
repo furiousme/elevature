@@ -34,9 +34,8 @@ const Step3Form = ({ goToStep, passAnswers }: Props) => {
     <form className='flex grow flex-col justify-center'>
       <div className='mx-auto flex min-h-[400px] max-w-lg flex-col justify-center space-y-6 bg-background px-4'>
         <p className='mb-4'>How would you rate your overall proficiency in your primary skills?</p>
-
         <div className='mb-10 grid auto-cols-fr grid-cols-2'>
-          {satisfactionLevels.map(([level, description], ind) => {
+          {satisfactionLevels.map(([level, description]) => {
             return (
               <div className='mb-4 flex items-center' key={level}>
                 <label className='flex items-center text-sm'>
@@ -67,7 +66,7 @@ const Step3Form = ({ goToStep, passAnswers }: Props) => {
         <div className='mb-10'>
           <label className='mb-4 block'>Briefly describe your long-term career goal</label>
           <textarea
-            placeholder='e.g., becoming a team leader, switching to a data analyst role, mastering software development...'
+            placeholder='e.g., becoming a team leader...'
             value={longTermGoal}
             onChange={(e) => setLongTermGoal(e.target.value)} // add validation
             className='block w-full max-w-lg rounded border border-inactive bg-background p-4 text-sm outline-accent'

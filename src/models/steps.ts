@@ -2,6 +2,7 @@ import Step1Form from 'components/forms/step1-form';
 import Step2Form from 'components/forms/step2-form';
 import Step3Form from 'components/forms/step3-form';
 import Step4Form from 'components/forms/step4-form';
+import Step5Form from 'components/forms/step5-form';
 import Step1Icon from 'components/icons/step1-icon';
 import Step2Icon from 'components/icons/step2-icon';
 import Step3Icon from 'components/icons/step3-icon';
@@ -49,6 +50,6 @@ export const steps = [
     title: 'Skill Application Preferences',
     description:
       "Let's capture your preferred contexts for applying new skills, which can guide suggestions on practical use",
-    Form: Step1Form,
+    Form: Step5Form,
   },
 ];

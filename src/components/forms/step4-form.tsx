@@ -2,7 +2,7 @@ import { MouseEvent, useState } from 'react';
 
 import config from '../../../tailwind.config';
 
-import { Answers } from 'app/types';
+import { Answers, TimeCommitment } from 'app/types';
 import ArrowRight from 'components/icons/arrow-right';
 import { learningStyles, learningStylesMap, timeCommitments } from 'models/options';
 import { steps } from 'models/steps';
@@ -15,10 +15,10 @@ type Props = {
 };
 
 const Step4Form = ({ goToStep, passAnswers }: Props) => {
-  const [step] = useState(() => steps.find((el) => el.order === 1));
+  const [step] = useState(() => steps.find((el) => el.order === 4));
   const [learningInterests, setInterests] = useState('');
-  const [learningStyle, setLearningStyle] = useState('');
-  const [timeCommitment, setTimeCommitment] = useState('');
+  const [learningStyle, setLearningStyle] = useState(learningStylesMap.selfPaced);
+  const [timeCommitment, setTimeCommitment] = useState(TimeCommitment.LESS_THAN_2_HOURS);
 
   if (!step) return null;
 
@@ -26,6 +26,7 @@ const Step4Form = ({ goToStep, passAnswers }: Props) => {
     e.preventDefault();
     if (!learningInterests || !learningStyle || !timeCommitment) return;
     passAnswers('interests', { learningInterests, learningStyle });
+    console.log(step.order, 'go to +1');
     goToStep(step.order + 1);
   };
 
@@ -47,7 +48,7 @@ const Step4Form = ({ goToStep, passAnswers }: Props) => {
 
         <p className='mb-4'>What type of learning experience do you prefer?</p>
         <div className='mb-10 grid auto-cols-fr grid-cols-2'>
-          {learningStyles.map(([key, option], ind) => {
+          {learningStyles.map(([key, option]) => {
             return (
               <div className='mb-4 flex items-center' key={key}>
                 <label className='flex items-center text-sm'>
@@ -67,7 +68,7 @@ const Step4Form = ({ goToStep, passAnswers }: Props) => {
 
         <p className='mb-4'>How much time can you commit to learning new skills each week?</p>
         <div className='mb-10 grid auto-cols-fr grid-cols-2'>
-          {timeCommitments.map(([key, option], ind) => {
+          {timeCommitments.map(([key, option]) => {
             return (
               <div className='mb-4 flex items-center' key={key}>
                 <label className='flex items-center text-sm'>

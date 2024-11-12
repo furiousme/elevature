@@ -33,23 +33,17 @@ const Step1Form = ({ goToStep, passAnswers }: Props) => {
     <form className='flex grow flex-col justify-center'>
       <div className='mx-auto flex min-h-[400px] max-w-lg flex-col justify-center space-y-6 bg-background px-4'>
         <div className='mb-10'>
-          <label className='mb-4 block'>
-            What is your current job title or primary role? (e.g., Software Developer, Teacher,
-            Sales Associate)
-          </label>
+          <label className='mb-4 block'>What is your current job title or primary role?</label>
           <input
             type='text'
-            placeholder='Current job title'
+            placeholder='e.g., Software Developer...'
             value={jobTitle}
             onChange={(e) => setJobTitle(e.target.value)} // add validation
             className='w-full rounded-md border border-inactive bg-background px-4 py-2.5 text-lg outline-accent'
           />
         </div>
 
-        <p className='mb-4'>
-          Which industry do you currently work in or are most interested in? (e.g., Technology,
-          Education, Healthcare)
-        </p>
+        <p className='mb-4'>Which industry do you currently work in or are most interested in?</p>
         <Dropdown
           label='Select industry'
           options={industries}

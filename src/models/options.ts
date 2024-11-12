@@ -1,4 +1,4 @@
-import { SatisfactionLevel, SkillLevel, TimeCommitment } from 'app/types';
+import { NetworkingInterest, SatisfactionLevel, SkillLevel, TimeCommitment } from 'app/types';
 
 export const industries = [
   'Accounting & Finance',
@@ -72,6 +72,15 @@ export const learningStylesMap = {
   mentorship: 'Mentorship or coaching',
 };
 
+export const skillContextMap = {
+  currentRole: 'Within my current role',
+  transition: 'To transition into a new role',
+  sideProject: 'For a side project or freelance',
+  personalGrowth: 'For personal growth or hobby',
+};
+
 export const learningStyles = Object.entries(learningStylesMap);
 export const satisfactionLevels = Object.entries(SatisfactionLevel);
 export const timeCommitments = Object.entries(TimeCommitment);
+export const skillContexts = Object.entries(skillContextMap);
+export const networkingInterests = Object.entries(NetworkingInterest);
