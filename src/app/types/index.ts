@@ -36,6 +36,18 @@ export type Answers = {
   };
 };
 
+export type Suggestion = {
+  summary: string;
+  career_path: string[];
+  skills_to_develop: string[];
+};
+
+export type Result = {
+  id: string;
+  answers: Answers;
+  suggestion: Suggestion;
+};
+
 export enum SkillLevel {
   BEGINNER = 'Beginner',
   INTERMEDIATE = 'Intermediate',
