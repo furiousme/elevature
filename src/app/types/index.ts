@@ -9,7 +9,7 @@ export type Step = {
 export type StepFormProps = {
   goToStep: (stepNumber: number) => void;
   passAnswers: (key: string, data: unknown) => void;
-  finishQuiz?: () => void;
+  finishQuiz?: (key: string, data: Answers['preferences']) => void;
 };
 
 export type Answers = {

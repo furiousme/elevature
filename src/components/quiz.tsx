@@ -6,28 +6,50 @@ import StepsProgressBar from './steps-progress-bar';
 import { getPassedSteps } from 'utils';
 import { Answers } from 'app/types';
 import { steps } from 'models/steps';
+import { useRouter } from 'next/navigation';
 
 const Quiz = () => {
   const [activeStep, setActiveStep] = useState(() => steps.find((el) => el.order === 1));
   const [answers, setAnswers] = useState<Partial<Answers>>({});
+  const router = useRouter();
 
   const passedSteps = useMemo(() => getPassedSteps(answers), [answers]);
 
   if (!activeStep) return null;
 
   const goToStep = useCallback((stepOrder: number) => {
-    console.log({ stepOrder });
     const step = steps.find((el) => el.order === stepOrder);
 
     if (step) setActiveStep(step);
   }, []);
 
-  const saveAnswers = (key: string, data: unknown) =>
+  const saveAnswers = (key: string, data: unknown) => {
     setAnswers((prev) => ({ ...prev, [key]: data }));
+  };
 
-  const finishQuiz = useCallback(() => {
-    console.log({ answers });
-  }, [answers]);
+  const finishQuiz = useCallback(
+    async (key: string, data: Answers['preferences']) => {
+      const updatedAnswers = { ...answers, [key]: data };
+      setAnswers(updatedAnswers);
+
+      try {
+        const resultsResponse = await fetch('/api/result', {
+          method: 'POST',
+          body: JSON.stringify(updatedAnswers),
+          headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (resultsResponse.ok) {
+          const data = await resultsResponse.json();
+          console.log('OK', data);
+          router.push('/summary');
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    },
+    [answers],
+  );
 
   return (
     <>

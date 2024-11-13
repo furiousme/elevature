@@ -1,5 +1,3 @@
-import { Answers } from 'app/types';
-import { steps } from 'models/steps';
 import Quiz from 'components/quiz';
 
 const Page = () => {

@@ -1,6 +1,6 @@
-import { MouseEvent, useState } from 'react';
+'use client';
 
-import config from '../../../tailwind.config';
+import { MouseEvent, useState } from 'react';
 
 import { Answers, SatisfactionLevel } from 'app/types';
 import Dropdown from 'components/dropdown';
@@ -73,7 +73,7 @@ const Step3Form = ({ goToStep, passAnswers }: Props) => {
           placeholder='e.g., becoming a team leader...'
           value={longTermGoal}
           onChange={(e) => setLongTermGoal(e.target.value)} // add validation
-          className='block w-full max-w-lg rounded border border-inactive bg-background p-4 text-sm outline-accent'
+          className='block w-full max-w-lg rounded border border-inactive bg-background p-4 mb-8 text-sm outline-accent'
           rows={3}
         />
       </div>

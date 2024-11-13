@@ -1,3 +1,5 @@
+'use client';
+
 import { MouseEvent, useState } from 'react';
 import { Answers } from 'app/types';
 import Dropdown from 'components/dropdown';

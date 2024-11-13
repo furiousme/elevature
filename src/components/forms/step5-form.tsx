@@ -1,3 +1,5 @@
+'use client';
+
 import { MouseEvent, useState } from 'react';
 
 import { Answers, NetworkingInterest } from 'app/types';
@@ -8,7 +10,7 @@ import FormWrapper from 'components/form-wrapper';
 type Props = {
   goToStep: (step: number) => void;
   passAnswers: (key: string, { skillContext, networkingInterest }: Answers['preferences']) => void;
-  finishQuiz?: () => void;
+  finishQuiz?: (key: string, { skillContext, networkingInterest }: Answers['preferences']) => void;
 };
 
 const Step5Form = ({ passAnswers, finishQuiz }: Props) => {
@@ -21,8 +23,7 @@ const Step5Form = ({ passAnswers, finishQuiz }: Props) => {
   const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!skillContext || !networkingInterest) return;
-    passAnswers('preferences', { skillContext, networkingInterest });
-    finishQuiz?.();
+    finishQuiz?.('preferences', { skillContext, networkingInterest });
   };
 
   return (

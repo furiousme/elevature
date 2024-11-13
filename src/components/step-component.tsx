@@ -1,10 +1,10 @@
-import { Step } from 'app/types';
+import { Answers, Step } from 'app/types';
 
 type Props = {
   step: Step;
   goToStep: (stepNumber: number) => void;
   passAnswers: (key: string, data: unknown) => void;
-  finishQuiz?: () => void;
+  finishQuiz?: (key: string, data: Answers['preferences']) => void;
 };
 
 const StepComponent = ({ step, goToStep, passAnswers, finishQuiz }: Props) => {

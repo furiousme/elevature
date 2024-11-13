@@ -1,3 +1,5 @@
+'use client';
+
 import { Fragment, MouseEvent, useState } from 'react';
 
 import { Answers, SkillLevel } from 'app/types';
