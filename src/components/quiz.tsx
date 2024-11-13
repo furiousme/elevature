@@ -1,17 +1,22 @@
 'use client';
 
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import StepComponent from './step-component';
 import StepsProgressBar from './steps-progress-bar';
 import { getPassedSteps } from 'utils';
 import { Answers } from 'app/types';
 import { steps } from 'models/steps';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useAnswers } from 'app/store/answers-provider';
+import { useResults } from 'app/store/results-provider';
 
 const Quiz = () => {
   const [activeStep, setActiveStep] = useState(() => steps.find((el) => el.order === 1));
-  const [answers, setAnswers] = useState<Partial<Answers>>({});
+  const [isLoading, setIsLoading] = useState(false);
+  const { answers, updateAnswers, clearAnswers } = useAnswers((state) => state);
+  const addResult = useResults((state) => state.addResult);
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const passedSteps = useMemo(() => getPassedSteps(answers), [answers]);
 
@@ -24,13 +29,13 @@ const Quiz = () => {
   }, []);
 
   const saveAnswers = (key: string, data: unknown) => {
-    setAnswers((prev) => ({ ...prev, [key]: data }));
+    updateAnswers(key, data);
   };
 
   const finishQuiz = useCallback(
     async (key: string, data: Answers['preferences']) => {
+      setIsLoading(true);
       const updatedAnswers = { ...answers, [key]: data };
-      setAnswers(updatedAnswers);
 
       try {
         const resultsResponse = await fetch('/api/result', {
@@ -40,30 +45,50 @@ const Quiz = () => {
         });
 
         if (resultsResponse.ok) {
-          const data = await resultsResponse.json();
-          console.log('OK', data);
-          router.push('/summary');
+          try {
+            const data = await resultsResponse.json();
+            const params = new URLSearchParams(searchParams);
+            const id = new Date().getTime().toString();
+            addResult({ id, answers: updatedAnswers as Answers, suggestion: data });
+            params.set('id', id);
+            router.push(`/result/?${params.toString()}`);
+          } catch (e) {
+            console.error(e);
+            throw e;
+          }
         }
-      } catch (e) {
-        console.error(e);
+      } finally {
+        setIsLoading(false);
       }
     },
     [answers],
   );
 
+  useEffect(() => {
+    return () => clearAnswers();
+  }, []);
+
   return (
     <>
-      <StepsProgressBar
-        activeStepOrder={activeStep.order}
-        passedSteps={passedSteps}
-        goToStep={goToStep}
-      />
-      <StepComponent
-        step={activeStep}
-        goToStep={goToStep}
-        passAnswers={saveAnswers}
-        finishQuiz={finishQuiz}
-      />
+      {isLoading ? (
+        <div className='flex grow justify-center items-center text-3xl text-bold bg-background'>
+          Loading...
+        </div>
+      ) : (
+        <>
+          <StepsProgressBar
+            activeStepOrder={activeStep.order}
+            passedSteps={passedSteps}
+            goToStep={goToStep}
+          />
+          <StepComponent
+            step={activeStep}
+            goToStep={goToStep}
+            passAnswers={saveAnswers}
+            finishQuiz={finishQuiz}
+          />
+        </>
+      )}
     </>
   );
 };

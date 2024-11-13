@@ -1,7 +1,9 @@
+import ResultScreen from 'components/result-screen';
+
 export const Page = () => {
   return (
     <div>
-      <h1>Page</h1>
+      <ResultScreen />
     </div>
   );
 };

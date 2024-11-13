@@ -12,12 +12,14 @@ export const getPassedSteps = (answers: Partial<Answers>) => {
 export const constructPromptMessage = (
   answers: Answers,
 ): { message: string; systemMessage: string } => {
-  const systemMessage = `Answer as an experienced carrier consultant. Answer talking to the user directly (e.g. 'you'). Give accurate and precise advice. Your answer should be not less than 250 and no more than 300 words. Organize your answer exactly under the following structure: 
-    {
+  const systemMessage = `Answer as an experienced carrier consultant. Answer talking to the user directly (e.g. 'you'). Give accurate and precise advice. Your answer should be not less than 250 and no more than 300 words. Your answer should strictly follow a JSON format with following structure: 
+  an object with 3 keys: "summary", "career_path", "skills_to_develop". 
+    Each key should have a value that is a string. Below is an example of your response structure:
+    "{
     "summary": "a brief summary of the best user suggested path for the user",
     "career_path": "a list of career paths that may interest the user based on the information provided in the user's profile,  suggest career paths with very short descriptions",
     "skills_to_develop": "a list of the most in-demand skills based on the information provided in the user's profile,  suggest skills with very short descriptions"  
-    }`;
+    }"`;
 
   const inputText = `
     Current Role (user's current job): ${answers.basic.jobTitle} 
