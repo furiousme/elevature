@@ -8,12 +8,11 @@ const Home = () => {
       <div className='bg-circle-top' />
       <div className='bg-circle-bottom' />
       <div className='container flex min-h-full flex-col'>
-        <header className='p-5'>
+        <header className='p-5 bg-transparent'>
           <Link href='/' className='hover text-xl font-bold uppercase'>
             Elevature
           </Link>
         </header>
-
         <main className='flex flex-col sm:grow lg:flex-row'>
           <div className='mb-10 flex flex-1 flex-col justify-center gap-2 p-5 pb-3 sm:mb-0 md:pb-4 lg:pb-16'>
             <h1 className='mb-2 text-5xl font-bold'>Career Skill Quiz & Suggestions</h1>

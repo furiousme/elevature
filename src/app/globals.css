@@ -45,6 +45,14 @@ body {
   @apply bg-circle bottom-0 left-0 h-[15vw] w-[15vw] translate-x-[-45%] translate-y-[45%];
 }
 
+.bg-circle-bottom-right {
+  @apply bg-circle bottom-0 left-auto right-0 h-[15vw] w-[15vw] translate-x-[45%] translate-y-[45%];
+}
+
+.bg-circle-left {
+  @apply bg-circle left-0 top-[10%] h-[20vw] w-[20vw] translate-x-[-75%] translate-y-[-45%];
+}
+
 .hover {
   @apply transition ease-in-out duration-200;
 
